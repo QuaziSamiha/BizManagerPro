@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Laan POS",
-  description: "Created By ATI LIMITED",
+  title: "BizManager Pro",
+  description: "Created By QuaziSamiha",
 };
 
 export default function RootLayout({

@@ -1,11 +1,12 @@
-import Login from "@/components/login/Login";
+import Loader from "@/components/ui/share/loader/Loader";
+import dynamic from "next/dynamic";
 
-const page = () => {
-  return (
-    <div className="bg-bgPrimary">
-      <Login />
-    </div>
-  );
+const DynamicHome = dynamic(() => import("@/pages/home/Home"), {
+  loading: () => <Loader />,
+});
+
+const HomePage = () => {
+  return <DynamicHome />;
 };
 
-export default page;
+export default HomePage;
