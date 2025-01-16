@@ -1,0 +1,36 @@
+.outerDivShadow {
+  box-shadow: -10px -10px 20px 0px rgba(68, 67, 94, 0.25),
+    10px 10px 20px 0px rgba(40, 40, 40, 0.25);
+}
+.innerRedDivShadow {
+  box-shadow: 8px 8px 16px 0px rgba(169, 74, 76, 0.25) inset,
+    -8px -8px 16px 0px rgba(40, 40, 40, 0.25) inset,
+    8px 8px 16px 0px rgba(40, 40, 40, 0.25),
+    8px 8px 16px 0px rgba(169, 74, 76, 0.25);
+}
+
+.innerWhiteDivShadow {
+  box-shadow: 8px 8px 16px 0px rgba(231, 231, 231, 0.25) inset,
+    -8px -8px 16px 0px rgba(40, 40, 40, 0.25) inset,
+    8px 8px 16px 0px rgba(40, 40, 40, 0.25),
+    8px 8px 16px 0px rgba(231, 231, 231, 0.25);
+}
+.innerBlueDivShadow {
+  box-shadow: 8px 8px 16px 0px rgba(77, 74, 169, 0.25) inset,
+    -8px -8px 16px 0px rgba(40, 40, 40, 0.25) inset,
+    8px 8px 16px 0px rgba(40, 40, 40, 0.25),
+    8px 8px 16px 0px rgba(77, 74, 169, 0.25);
+}
+
+.outerFistDivShadow {
+  box-shadow: -12px -12px 24px 0px rgba(77, 74, 169, 0.25),
+    12px 12px 24px 0px rgba(40, 40, 40, 0.25),
+    -12px -12px 24px 0px rgba(77, 74, 169, 0.25) inset,
+    12px 12px 24px 24px rgba(40, 40, 40, 0.25) inset;
+}
+.outerLastDivShadow {
+  box-shadow: -12px -12px 24px 0px rgba(68, 67, 94, 0.25),
+    12px 12px 24px 0px rgba(40, 40, 40, 0.25),
+    -12px -12px 24px 0px rgba(68, 67, 94, 0.25) inset,
+    12px 12px 24px 0px rgba(40, 40, 40, 0.25) inset;
+}
