@@ -6,13 +6,8 @@ import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoMenu } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
+import { ILink } from "@/interfaces/dashboard";
 
-
-interface Links {
-  label: string;
-  href: string;
-  icon: React.JSX.Element | React.ReactNode;
-}
 
 interface SidebarContextProps {
   open: boolean;
@@ -163,11 +158,12 @@ export const SidebarLink = ({
   className,
   ...props
 }: {
-  link: Links;
+  link: ILink;
   className?: string;
   props?: LinkProps;
 }) => {
   const { open, animate } = useSidebar();
+  console.log('sam' , link.href)
   return (
     <Link
       href={link.href}

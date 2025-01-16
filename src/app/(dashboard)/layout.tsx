@@ -1,13 +1,12 @@
 "use client";
-
-import { DashboardSidebar } from "@/components/ui/sideNavbar/DashboardSidebar";
 import store from "@/redux/Store/store";
 import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import DashboardSidebar from "@/components/ui/sideNavbar/DashboardSidebar";
+import React from "react";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const queryClient = new QueryClient();
-
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
@@ -17,4 +16,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </QueryClientProvider>
     </Provider>
   );
-}
+};
+
+export default DashboardLayout;

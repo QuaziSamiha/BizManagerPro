@@ -1,9 +1,26 @@
+'use client'
 import { Input } from "../ui/input";
-import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import { KeyRound } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+
+interface UserInfo {
+  username: string;
+  password: string;
+}
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<UserInfo>();
+
+  const router = useRouter();
+  const onSubmit = (data: UserInfo) => {
+    router.push("/dashboard");
+  };
   return (
     <div className="w-[40%]">
       <Card className="p-8 bg-white/90 backdrop-blur-sm shadow-lg border-blue-100">
@@ -14,7 +31,7 @@ const Login = () => {
             <KeyRound size={20} className="text-blue-600" />
           </div>
         </div>
-        <form className="space-y-8">
+        <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <Input
               type="email"
@@ -38,9 +55,11 @@ const Login = () => {
               Forgot password?
             </a>
           </div>
-          <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-            Sign In
-          </Button>
+          <input
+            type="submit"
+            value='Sign in'
+            className="py-1.5 rounded-lg w-full bg-blue-600 hover:bg-blue-700 text-white"
+          />
         </form>
       </Card>
     </div>
