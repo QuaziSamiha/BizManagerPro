@@ -169,7 +169,7 @@ const DashboardSidebar = ({ children }: { children: React.ReactNode }) => {
         </SidebarBody>
       </Sidebar>
       <div className="flex flex-1">
-        <div className="p-2 md:p-10  border border-Tertiary bg-bg flex flex-col gap-2 flex-1 w-full h-full overflow-hidden overflow-y-scroll">
+        <div className="p-2 md:p-10 border border-Tertiary bg-bg flex flex-col gap-2 flex-1 w-full h-full overflow-hidden overflow-y-scroll">
           {children}
         </div>
       </div>

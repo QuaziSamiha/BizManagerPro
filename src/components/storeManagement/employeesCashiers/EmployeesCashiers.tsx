@@ -53,6 +53,54 @@ const storeData = [
     employee_type: "cashier",
   },
   {
+    id: 1,
+    name: "John Doe",
+    store_name: "Doe Mart",
+    employee_type: "cashier",
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    store_name: "Smith's Goods",
+    employee_type: "employee",
+  },
+  {
+    id: 3,
+    name: "Alice Johnson",
+    store_name: "Alice's Wonderland",
+    employee_type: "admin",
+  },
+  {
+    id: 4,
+    name: "Bob Brown",
+    store_name: "Brown's Bazaar",
+    employee_type: "cashier",
+  },
+  {
+    id: 1,
+    name: "John Doe",
+    store_name: "Doe Mart",
+    employee_type: "cashier",
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    store_name: "Smith's Goods",
+    employee_type: "employee",
+  },
+  {
+    id: 3,
+    name: "Alice Johnson",
+    store_name: "Alice's Wonderland",
+    employee_type: "admin",
+  },
+  {
+    id: 4,
+    name: "Bob Brown",
+    store_name: "Brown's Bazaar",
+    employee_type: "cashier",
+  },
+  {
     id: 5,
     name: "Charlie Davis",
     store_name: "Davis Department Store",
@@ -163,9 +211,14 @@ const EmployeesCashiers = () => {
         setFiltering={setFiltering}
         data={data}
         isLoading={isLoading}
+        modalTitle="dd dddddd"
       />
 
-      {isLoading ? <div>loading ...</div> : <TableAll table={table} />}
+      {isLoading ? (
+        <div>loading ...</div>
+      ) : (
+        <TableAll table={table} isLoading={isLoading} />
+      )}
 
       <Dialog open={editModalOpen} onOpenChange={setEditModalOpen}>
         <DialogContent className="bg-white w-[80vw]">

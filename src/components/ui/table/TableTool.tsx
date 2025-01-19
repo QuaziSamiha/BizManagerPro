@@ -1,5 +1,4 @@
 import FilterTable from "./FilterTable";
-import TablePagination from "./TablePagination";
 import { GrDocumentCsv } from "react-icons/gr";
 import { GrDocumentPdf } from "react-icons/gr";
 import AddPromo from "@/components/storeManagement/promotions/PromoProductList/AddPromo";
@@ -29,7 +28,6 @@ interface IFilter {
 const TableTool: React.FC<IFilter> = ({
   filtering,
   setFiltering,
-  isLoading,
   table,
   data,
   refetch,
@@ -42,9 +40,8 @@ const TableTool: React.FC<IFilter> = ({
   setAddModalOpen,
 }) => {
   return (
-    <div className="flex justify-between items-center bg-violetTernary bg-opacity-50 rounded-t-[10px] mt-5 px-7 py-3.5">
+    <div className="flex justify-between items-center bg-stone-200 rounded-t-lg mt-5 px-7 py-3.5">
       <div className="flex items-center gap-4">
-        {!isLoading && <TablePagination table={table} />}
         <FilterTable
           filtering={filtering}
           setFiltering={setFiltering}
@@ -89,6 +86,7 @@ const TableTool: React.FC<IFilter> = ({
           </div>
         )}
       </div>
+     
     </div>
   );
 };

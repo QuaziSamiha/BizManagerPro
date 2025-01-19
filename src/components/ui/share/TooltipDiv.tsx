@@ -1,4 +1,4 @@
-import { MdOutlineEdit } from "react-icons/md";
+import { FaRegEdit } from "react-icons/fa";
 import { IoEyeOutline } from "react-icons/io5";
 import { MdDeleteOutline } from "react-icons/md";
 import {
@@ -20,9 +20,9 @@ const TooltipDiv: React.FC<IAdd> = ({ name }) => {
         <TooltipTrigger asChild>
           <label
             htmlFor="show data"
-            className="cursor-pointer bg-violetAltPrimary p-2 rounded-md"
+            className="cursor-pointer p-2 rounded-md"
           >
-            {name === "Edit" && <MdOutlineEdit fontSize={16} color="#FFF" />}
+            {name === "Edit" && <FaRegEdit className="text-blue-700  hover:text-blue-900" fontSize={18} />}
             {name === "View" && <IoEyeOutline fontSize={16} color="#FFF" />}
             {name === "Delete" && (
               <MdDeleteOutline

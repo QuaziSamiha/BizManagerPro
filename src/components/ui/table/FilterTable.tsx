@@ -17,7 +17,7 @@ const FilterTable: React.FC<IFilter> = ({ filtering, setFiltering }) => {
 
   // =================== 	HANDLE EXPORT FUNCTION ===========================
   return (
-    <div className="flex items-center gap-2 border border-textPrimary rounded-md px-2 py-1.5">
+    <div className="flex items-center gap-2 border border-stone-600 rounded-md px-2 py-2">
       <HiOutlineSearch className="w-4 h-4" />
       <input
         type="text"
@@ -25,7 +25,7 @@ const FilterTable: React.FC<IFilter> = ({ filtering, setFiltering }) => {
         name="search"
         value={filtering || ""}
         onChange={(e) => setFiltering(e.target.value)}
-        className="bg-transparent text-textPrimary text-sm placeholder:text-sm placeholder:text-textPrimary outline-none w-80 rounded-md"
+        className="bg-transparent text-stone-600 text-sm placeholder:text-sm placeholder:text-stone-800 outline-none w-80 rounded-md"
       />
     </div>
   );
