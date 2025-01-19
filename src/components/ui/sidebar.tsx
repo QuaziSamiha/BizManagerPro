@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { IoMenu } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { ILink } from "@/interfaces/dashboard";
-
+import { usePathname } from "next/navigation";
 
 interface SidebarContextProps {
   open: boolean;
@@ -118,7 +118,7 @@ export const MobileSidebar = ({
         {...props}
       >
         <div className="flex justify-end z-20 w-full">
-          <IoMenu 
+          <IoMenu
             className="text-neutral-800 dark:text-neutral-200"
             onClick={() => setOpen(!open)}
           />
@@ -162,25 +162,30 @@ export const SidebarLink = ({
   className?: string;
   props?: LinkProps;
 }) => {
+  const pathname = usePathname();
   const { open, animate } = useSidebar();
-  console.log('sam' , link.href)
+  // console.log("sam", pathname);
+  const IconComponent = link.icon;
   return (
     <Link
       href={link.href}
-      className={cn(
-        "flex items-center justify-start gap-2  group/sidebar py-2",
-        className
-      )}
+      className={`flex items-center justify-start gap-2 group/sidebar py-2 ${
+        pathname === link.href ? "text-blue-700 font-medium" : "text-stone-400"
+      }`}
       {...props}
     >
-      {link.icon}
+      <IconComponent
+        className={`${
+          pathname === link.href ? "text-blue-700" : "text-stone-400"
+        } h-5 w-5 flex-shrink-0`}
+      />
 
       <motion.span
         animate={{
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        className=" text-sm group-hover/sidebar:translate-x-1 transition duration-150 text-nowrap whitespace-pre inline-block !p-0 !m-0"
+        className="text-sm group-hover/sidebar:translate-x-1 transition duration-150 text-nowrap whitespace-pre inline-block !p-0 !m-0"
       >
         {link.label}
       </motion.span>

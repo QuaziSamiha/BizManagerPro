@@ -1,13 +1,13 @@
-import { ReactNode } from "react";
+import { IconType } from "react-icons/lib";
 
 export interface ILink {
   label: string;
   href: string;
-  icon: ReactNode;
+  icon: IconType;
 }
 
 export interface IModuleData {
-  moduleTitle: string;
+  moduleTitle?: string;
   moduleLinks: ILink[];
 }
 

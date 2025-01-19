@@ -15,11 +15,11 @@ body {
   }
 
   &::-webkit-scrollbar-track {
-    background-color: #4d4aa940;
+    background-color: #1d4ed880;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #4d4aa980;
+    background-color: #1d4ed880;
   }
 
   &::-webkit-scrollbar {
