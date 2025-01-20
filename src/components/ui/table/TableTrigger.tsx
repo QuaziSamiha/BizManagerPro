@@ -6,25 +6,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../dialog";
-import { ReactNode } from "react";
+import { ITableTrigger } from "@/interfaces/table";
 
-interface IFilter {
-  open?: boolean;
-  setOpen: (open: boolean) => void;
-  buttonName?: string;
-  buttonIcon?: ReactNode;
-  modalTitle?: string;
-  modalTitleColor?: string;
-  children: ReactNode;
-}
-
-const TableTrigger: React.FC<IFilter> = ({
+const TableTrigger: React.FC<ITableTrigger> = ({
   open,
   setOpen,
   buttonName,
-  buttonIcon = <MdAdd fontSize={20} />,
+  ButtonIcon = MdAdd,
   modalTitle,
-  modalTitleColor = "text-textPrimary",
   children,
 }) => {
   return (
@@ -33,7 +22,7 @@ const TableTrigger: React.FC<IFilter> = ({
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger className="">
             <div className="bg-violetAltPrimary hover:bg-violetAltSecondary select-none px-3 py-2 rounded-md font-medium text-white text-base flex justify-center items-center gap-2">
-              {buttonIcon}
+              {<ButtonIcon fontSize={20} />}
               {buttonName}
             </div>
           </DialogTrigger>
@@ -41,7 +30,7 @@ const TableTrigger: React.FC<IFilter> = ({
           <DialogContent className="bg-white w-full max-h-[90vh] overflow-y-auto scrollbar">
             <DialogHeader>
               <DialogTitle
-                className={`${modalTitleColor} font-semibold text-2xl`}
+                className={`font-semibold text-2xl`}
               >
                 {modalTitle}
               </DialogTitle>

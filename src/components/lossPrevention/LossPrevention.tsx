@@ -17,7 +17,7 @@ import { getUsers } from "@/api/api";
 import TooltipDiv from "../ui/share/TooltipDiv";
 import { useDispatch } from "react-redux";
 import { rowValue } from "@/redux/Reducer/MainSlice";
-import TableAll from "../ui/table/TableAll";
+import TableAll from "../ui/table/Table";
 import TableTool from "../ui/table/TableTool2";
 import { RiFilter3Line } from "react-icons/ri";
 

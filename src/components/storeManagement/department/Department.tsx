@@ -16,7 +16,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import TableTool from "@/components/ui/table/TableTool";
-import TableAll from "@/components/ui/table/TableAll";
+import TableAll from "@/components/ui/table/Table";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {

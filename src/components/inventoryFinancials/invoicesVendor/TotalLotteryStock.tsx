@@ -5,7 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import TableAll from "@/components/ui/table/TableAll";
+import TableAll from "@/components/ui/table/Table";
 import TableTool from "@/components/ui/table/TableTool";
 import React, { useMemo, useState } from "react";
 import Edit from "../inventoryAudit/Edit";

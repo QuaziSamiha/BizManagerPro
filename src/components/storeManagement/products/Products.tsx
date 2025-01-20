@@ -15,7 +15,7 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import TableAll from "@/components/ui/table/TableAll";
+import TableAll from "@/components/ui/table/Table";
 import TableTool from "@/components/ui/table/TableTool";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

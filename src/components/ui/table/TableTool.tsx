@@ -1,67 +1,45 @@
 import FilterTable from "./FilterTable";
 import { GrDocumentCsv } from "react-icons/gr";
 import { GrDocumentPdf } from "react-icons/gr";
-import AddPromo from "@/components/storeManagement/promotions/PromoProductList/AddPromo";
-import AddMix from "@/components/storeManagement/promotions/MixAndMatchPromo/AddMix";
+// import AddPromo from "@/components/storeManagement/promotions/PromoProductList/AddPromo";
+// import AddMix from "@/components/storeManagement/promotions/MixAndMatchPromo/AddMix";
 // import AddNewProduct from "@/components/inventoryFinancials/inventoryCount/Add";
-import AddCombo from "@/components/storeManagement/promotions/CombinationPromo/AddCombo";
-import FilterTransaction from "@/components/lossPrevention/FilterTransaction";
-import TableTrigger from "./TableTrigger";
-import { ReactNode } from "react";
+// import AddCombo from "@/components/storeManagement/promotions/CombinationPromo/AddCombo";
+// import FilterTransaction from "@/components/lossPrevention/FilterTransaction";
+// import TableTrigger from "./TableTrigger";
+import { ITableTool } from "@/interfaces/table";
 
-interface IFilter {
-  filtering: string;
-  setFiltering: React.Dispatch<React.SetStateAction<string>>;
-  isLoading: boolean;
-  table: any;
-  data: any;
-  refetch?: any;
-  addTableButton?: boolean;
-  buttonName?: string;
-  buttonIcon?: ReactNode;
-  modalTitle: string;
-  modalTitleColor?: string;
-  setAddModalOpen?: any;
-  addModalOpen?: any;
-}
-
-const TableTool: React.FC<IFilter> = ({
+const TableTool: React.FC<ITableTool> = ({
   filtering,
   setFiltering,
-  table,
-  data,
-  refetch,
-  addTableButton,
-  buttonName,
-  buttonIcon,
-  modalTitle,
-  modalTitleColor,
-  addModalOpen,
-  setAddModalOpen,
+  // isLoading,
+  // table,
+  // data,
+  // refetch,
+  // addTriggerButton,
+  // buttonName,
+  // ButtonIcon,
+  // modalTitle,
+  // addModalOpen,
+  // setAddModalOpen,
 }) => {
   return (
     <div className="flex justify-between items-center bg-stone-200 rounded-t-lg mt-5 px-7 py-3.5">
       <div className="flex items-center gap-4">
-        <FilterTable
-          filtering={filtering}
-          setFiltering={setFiltering}
-          data={data}
-          table={table}
-        />
+        <FilterTable filtering={filtering} setFiltering={setFiltering} />
       </div>
       <div className="flex items-center gap-2.5">
-        <GrDocumentPdf size={24} />
-        <GrDocumentCsv size={24} />
+        <GrDocumentPdf size={24} className="text-stone-700" />
+        <GrDocumentCsv size={24} className="text-stone-700" />
 
-        {addTableButton && (
+        {/* {addTriggerButton && (
           <div className="ml-4">
             <TableTrigger
               open={addModalOpen}
               setOpen={setAddModalOpen}
               buttonName={buttonName}
-              buttonIcon={buttonIcon}
+              buttonIcon={ButtonIcon}
               modalTitle={modalTitle}
-              modalTitleColor={modalTitleColor}
             >
               {buttonName === "New Promotional Product" && (
                 <AddPromo setOpen={setAddModalOpen} refetch={refetch} />
@@ -73,9 +51,6 @@ const TableTool: React.FC<IFilter> = ({
               {buttonName === "New Combination Promotion" && (
                 <AddCombo setOpen={setAddModalOpen} refetch={refetch} />
               )}
-              {/* {buttonName === "New Product" && (
-                <AddNewProduct setOpen={setAddModalOpen} refetch={refetch} />
-              )} */}
               {buttonName === "Filter Transaction" && (
                 <FilterTransaction
                   setOpen={setAddModalOpen}
@@ -84,9 +59,8 @@ const TableTool: React.FC<IFilter> = ({
               )}
             </TableTrigger>
           </div>
-        )}
+        )} */}
       </div>
-     
     </div>
   );
 };

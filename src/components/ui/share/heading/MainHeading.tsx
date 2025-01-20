@@ -6,131 +6,47 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../../dialog";
-import { ReactNode } from "react";
+import { IMainHeading } from "@/interfaces/table";
 
-interface IFilter {
-  headerName: string;
-  totalData?: string;
-  children?: ReactNode;
-  buttonName: string;
-  open?: boolean;
-  setOpen: (open: boolean) => void;
-  modalTitle?: string;
-  userName?: string;
-  usersNumber?: number;
-  addButton?: boolean;
-}
-
-const MainHeading: React.FC<IFilter> = ({
+const MainHeading: React.FC<IMainHeading> = ({
   headerName,
-  totalData,
+  subHeader,
   buttonName,
   children,
   open,
   setOpen,
-  addButton = true,
   modalTitle = "New " + headerName,
+  ButtonIcon = MdAdd,
 }) => {
   return (
-    <div>
+    <>
       <div className="flex justify-between items-center">
         <div>
-          <p className="font-bold text-textPrimary text-xl">{headerName}</p>
-
-          <p className="text-textPrimary text-opacity-50 font-medium">
-            {totalData}
+          <p className="font-semibold text-blue-800 text-3xl">{headerName}</p>
+          <p className="text-blue-500 text-opacity-50 font-medium">
+            {subHeader}
           </p>
         </div>
 
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger className="">
-            <div className="bg-violetAltPrimary hover:bg-violetAltSecondary select-none px-3 py-2 rounded-md font-medium text-white text-base flex justify-center items-center gap-2">
-              {addButton && <MdAdd fontSize={20} />}
+            <div className="bg-blue-700 hover:bg-blue-800 select-none px-3 py-2 rounded-md font-medium text-white text-base flex justify-center items-center gap-2">
+              {<ButtonIcon fontSize={20} />}
               {buttonName}
             </div>
           </DialogTrigger>
 
           <DialogContent className="bg-white w-full max-h-[90vh] overflow-y-auto scrollbar">
             <DialogHeader>
-              <DialogTitle>{modalTitle}</DialogTitle>
+              <DialogTitle className="text-blue-800 text-2xl">{modalTitle}</DialogTitle>
             </DialogHeader>
             {children}
           </DialogContent>
         </Dialog>
       </div>
-    </div>
+    </>
   );
 };
 
 export default MainHeading;
 
-// import { MdAdd } from "react-icons/md";
-// import {
-//   Dialog,
-//   DialogContent,
-//   DialogHeader,
-//   DialogTitle,
-//   DialogTrigger,
-// } from "../../dialog";
-// import { ReactNode } from "react";
-
-// interface IFilter {
-//   headerName: string;
-//   totalData?: string;
-//   children?: ReactNode;
-//   buttonName: string;
-//   open?: boolean;
-//   setOpen: (open: boolean) => void;
-//   modalTitle?: string;
-//   userName?: string;
-//   usersNumber?: number;
-//   removeHeading?: any;
-//   addButton?: boolean;
-// }
-
-// const MainHeading: React.FC<IFilter> = ({
-//   headerName,
-//   totalData,
-//   buttonName,
-//   children,
-//   open,
-//   setOpen,
-//   removeHeading,
-//   addButton = true,
-//   modalTitle = "New " + headerName,
-// }) => {
-//   return (
-//     <div>
-//       <div className="flex justify-between items-center">
-//         <div>
-//           {removeHeading ? (
-//             ""
-//           ) : (
-//             <p className="font-bold text-textPrimary text-xl">{headerName}</p>
-//           )}
-//           <p className="text-textPrimary text-opacity-50 font-medium">
-//             {totalData}
-//           </p>
-//         </div>
-
-//         <Dialog open={open} onOpenChange={setOpen}>
-//           <DialogTrigger className="">
-//             <div className="bg-violetAltPrimary hover:bg-violetAltSecondary select-none px-3 py-2 rounded-md font-medium text-white text-base flex justify-center items-center gap-2">
-//               {addButton && <MdAdd fontSize={20} />}
-//               {buttonName}
-//             </div>
-//           </DialogTrigger>
-
-//           <DialogContent className="bg-white w-full max-h-[90vh] overflow-y-auto scrollbar">
-//             <DialogHeader>
-//               <DialogTitle>{modalTitle}</DialogTitle>
-//             </DialogHeader>
-//             {children}
-//           </DialogContent>
-//         </Dialog>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default MainHeading;

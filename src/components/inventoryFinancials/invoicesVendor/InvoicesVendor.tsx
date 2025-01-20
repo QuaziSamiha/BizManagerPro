@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getUsers } from "@/api/api";
 import { useDispatch } from "react-redux";
 import TableTool from "@/components/ui/table/TableTool";
-import TableAll from "@/components/ui/table/TableAll";
+import TableAll from "@/components/ui/table/Table";
 // import {
 //   Dialog,
 //   DialogContent,

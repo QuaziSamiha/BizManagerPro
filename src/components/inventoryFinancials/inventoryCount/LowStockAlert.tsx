@@ -1,5 +1,5 @@
 import { getUsers } from "@/api/api";
-import TableAll from "@/components/ui/table/TableAll";
+import TableAll from "@/components/ui/table/Table";
 import TableTool from "@/components/ui/table/TableTool";
 import { useQuery } from "@tanstack/react-query";
 import {

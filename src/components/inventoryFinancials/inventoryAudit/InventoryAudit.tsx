@@ -1,7 +1,7 @@
 'use client'
 import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 import MainHeading from "@/components/ui/share/heading/MainHeading";
-import TableAll from "@/components/ui/table/TableAll";
+import TableAll from "@/components/ui/table/Table";
 import TableTool from "@/components/ui/table/TableTool";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table";

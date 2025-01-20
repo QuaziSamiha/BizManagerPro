@@ -16,8 +16,8 @@ import {
 } from "@tanstack/react-table";
 import MainHeading from "@/components/ui/share/heading/MainHeading";
 import TableTool from "@/components/ui/table/TableTool";
-import TableAll from "@/components/ui/table/TableAll";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   Dialog,
   DialogContent,
@@ -26,133 +26,166 @@ import {
 } from "@/components/ui/dialog";
 import Edit from "./Edit";
 import Add from "./Add";
+import { IRowData } from "@/interfaces/storeManagement/employeeCashier";
+import Table from "@/components/ui/table/Table";
+import Loader from "@/components/ui/share/loader/Loader";
 
-const storeData = [
+const storeData: IRowData[] = [
   {
     id: 1,
     name: "John Doe",
     store_name: "Doe Mart",
-    employee_type: "cashier",
+    employee_type: "Cashier",
   },
   {
     id: 2,
     name: "Jane Smith",
     store_name: "Smith's Goods",
-    employee_type: "employee",
+    employee_type: "Staff",
   },
   {
     id: 3,
     name: "Alice Johnson",
     store_name: "Alice's Wonderland",
-    employee_type: "admin",
+    employee_type: "Admin",
   },
   {
     id: 4,
     name: "Bob Brown",
     store_name: "Brown's Bazaar",
-    employee_type: "cashier",
-  },
-  {
-    id: 1,
-    name: "John Doe",
-    store_name: "Doe Mart",
-    employee_type: "cashier",
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    store_name: "Smith's Goods",
-    employee_type: "employee",
-  },
-  {
-    id: 3,
-    name: "Alice Johnson",
-    store_name: "Alice's Wonderland",
-    employee_type: "admin",
-  },
-  {
-    id: 4,
-    name: "Bob Brown",
-    store_name: "Brown's Bazaar",
-    employee_type: "cashier",
-  },
-  {
-    id: 1,
-    name: "John Doe",
-    store_name: "Doe Mart",
-    employee_type: "cashier",
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    store_name: "Smith's Goods",
-    employee_type: "employee",
-  },
-  {
-    id: 3,
-    name: "Alice Johnson",
-    store_name: "Alice's Wonderland",
-    employee_type: "admin",
-  },
-  {
-    id: 4,
-    name: "Bob Brown",
-    store_name: "Brown's Bazaar",
-    employee_type: "cashier",
+    employee_type: "Cashier",
   },
   {
     id: 5,
+    name: "John Doe",
+    store_name: "Doe Mart",
+    employee_type: "Cashier",
+  },
+  {
+    id: 6,
+    name: "Jane Smith",
+    store_name: "Smith's Goods",
+    employee_type: "Staff",
+  },
+  {
+    id: 7,
+    name: "Alice Johnson",
+    store_name: "Alice's Wonderland",
+    employee_type: "Admin",
+  },
+  {
+    id: 8,
+    name: "Bob Brown",
+    store_name: "Brown's Bazaar",
+    employee_type: "Cashier",
+  },
+  {
+    id: 9,
+    name: "John Doe",
+    store_name: "Doe Mart",
+    employee_type: "Cashier",
+  },
+  {
+    id: 10,
+    name: "Jane Smith",
+    store_name: "Smith's Goods",
+    employee_type: "Staff",
+  },
+  {
+    id: 11,
+    name: "Alice Johnson",
+    store_name: "Alice's Wonderland",
+    employee_type: "Admin",
+  },
+  {
+    id: 12,
+    name: "Bob Brown",
+    store_name: "Brown's Bazaar",
+    employee_type: "Cashier",
+  },
+  {
+    id: 13,
     name: "Charlie Davis",
     store_name: "Davis Department Store",
-    employee_type: "employee",
+    employee_type: "Staff",
   },
 ];
 
+// ========= COMPONENT FUNCTION ===========
 const EmployeesCashiers = () => {
-  const [editData, setEditData] = useState(null);
-  const [filterModalOpen, setFilterModalOpen] = useState(false);
-  const [editModalOpen, setEditModalOpen] = useState(false);
+  // =========== STATE HOOKS ============
+  const [editData, setEditData] = useState<IRowData | null>(null);
+  // =============== STATE HOOKS FOR Modal ================
+  const [filterModalOpen, setFilterModalOpen] = useState<boolean>(false);
+  const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
+  const [addModalOpen, setAddModalOpen] = useState<boolean>(false);
+  // =============== STATE HOOKS FOR TABLE ================
+  const [sorting, setSorting] = useState<SortingState>([]);
+  const [filtering, setFiltering] = useState<string>("");
+  const [columnVisibility, setColumnVisibility] = useState({});
 
+  // =============== DISPATCH HOOK ==================
   const dispatch = useDispatch();
 
-  const handleEdit = (rowData: any) => {
+  // ======================= HANDLE EDIT FUNCTION ===================
+  const handleEdit = (rowData: IRowData) => {
     dispatch(rowValue(rowData));
     setEditData(rowData);
+    console.log(editData);
     setEditModalOpen(true);
   };
 
+  // ================ COLUMNS CONFIGURATION ==================
   const COLUMNS = [
     {
       header: "No.",
       accessorKey: "id",
       enableColumnFilter: false,
-      enableSorting: false,
     },
     {
       header: "Name",
       accessorKey: "name",
-      enableColumnFilter: false,
-      enableSorting: false,
     },
     {
       header: "Store Name",
       accessorKey: "store_name",
-      enableColumnFilter: false,
-      enableSorting: false,
     },
     {
       header: "Employee Type",
       accessorKey: "employee_type",
-      enableColumnFilter: false,
-      enableSorting: false,
+      cell: ({ row }: { row: { original: IRowData } }) => {
+        const rowData = row.original;
+        // console.log(rowData);
+        const employeeType = rowData.employee_type;
+        return (
+          <div className="flex gap-3 justify-center items-center w-full">
+            <div
+              className={`w-32 py-0.5 rounded-full text-center ${
+                employeeType === "Admin"
+                  ? "bg-green-100 text-green-900"
+                  : `${
+                      employeeType === "Cashier"
+                        ? "bg-blue-100 text-blue-800"
+                        : `${
+                            employeeType === "Staff" &&
+                            "bg-yellow-100 text-yellow-700"
+                          }`
+                    }`
+              }`}
+            >
+              {employeeType}
+            </div>
+          </div>
+        );
+      },
     },
     {
       header: "Action",
       accessor: "edit",
       enableSorting: false,
-      cell: (row: any) => (
+      cell: ({ row }: { row: { original: IRowData } }) => (
         <div className="flex gap-3 justify-center items-center w-full">
-          <button onClick={() => handleEdit(row.row.original)} className="flex">
+          <button onClick={() => handleEdit(row.original)} className="flex">
             <TooltipDiv name="Edit" />
           </button>
         </div>
@@ -160,24 +193,18 @@ const EmployeesCashiers = () => {
     },
   ];
 
-  const {
-    isLoading,
-    isError,
-    data: allUserData,
-    refetch,
-  } = useQuery({
+  // ========== QUERY HOOK =============
+  const { isLoading, refetch } = useQuery({
     queryKey: ["allUserData"],
     queryFn: () => getUsers(),
   });
 
+  // ================ MEMOIZED COLUMNS AND DATA ============
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => storeData, [storeData]);
 
-  const [sorting, setSorting] = useState<SortingState>([]);
-  const [filtering, setFiltering] = useState("");
-  const [columnVisibility, setColumnVisibility] = useState({});
-
-  const table = useReactTable({
+  // =========== TABLE INSTANCE ================
+  const table = useReactTable<IRowData>({
     data: data ?? [],
     columns,
     getCoreRowModel: getCoreRowModel(),
@@ -197,28 +224,24 @@ const EmployeesCashiers = () => {
   return (
     <div>
       <MainHeading
-        open={filterModalOpen}
-        setOpen={setFilterModalOpen}
-        headerName="Employees & Cashier"
-        buttonName="New"
+        headerName="Employees"
+        buttonName="New Employee"
+        open={addModalOpen}
+        setOpen={setAddModalOpen}
+        modalTitle="Add New Employee"
       >
-        <Add setOpen={setFilterModalOpen} refetch={refetch} />
+        <Add setOpen={setAddModalOpen} refetch={refetch} />
       </MainHeading>
 
       <TableTool
-        table={table}
         filtering={filtering}
         setFiltering={setFiltering}
-        data={data}
-        isLoading={isLoading}
-        modalTitle="dd dddddd"
+        // isLoading={isLoading}
+        // table={table}
+        // data={data}
       />
 
-      {isLoading ? (
-        <div>loading ...</div>
-      ) : (
-        <TableAll table={table} isLoading={isLoading} />
-      )}
+      {isLoading ? <Loader /> : <Table table={table} isLoading={isLoading} />}
 
       <Dialog open={editModalOpen} onOpenChange={setEditModalOpen}>
         <DialogContent className="bg-white w-[80vw]">
