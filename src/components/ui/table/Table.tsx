@@ -99,7 +99,7 @@ const Table = <TData,>({ table, isLoading }: ITable<TData>) => {
                     {row.getVisibleCells().map((cell: Cell<TData, unknown>) => (
                       <td
                         key={cell.id}
-                        className="px-7 py-3.5 mx-2 text-sm text-stone-700 first:rounded-l-md last:rounded-r-md last:text-center"
+                        className="px-7 py-3.5 mx-2 text-sm text-stone-700  last:text-center"
                       >
                         {flexRender(
                           cell.column.columnDef.cell,
