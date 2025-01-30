@@ -1,4 +1,4 @@
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues, Path } from "react-hook-form";
 import { Skeleton } from "../skeleton";
 import {
   Select,
@@ -7,29 +7,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../select";
+import { ISelectField } from "@/interfaces/form";
 
-interface SelectFieldProps {
-  control?: any;
-  resetField?: any;
-  name: string;
-  data: any[];
-  label?: string;
-  placeholderText?: string;
-  errorMessage?: string;
-  errors?: any;
-  labelKey: string;
-  valueKey: string;
-  resetFieldName1?: string;
-  resetFieldName2?: string;
-  disabledValue?: string;
-  makeDisable?: boolean;
-  isLoading?: boolean;
-  onChange?: (value: any) => void;
-  defaultValue?: any;
-  isRequired?: boolean;
-}
-
-const SelectField: React.FC<SelectFieldProps> = ({
+const SelectField = <T extends FieldValues, U>({
   control,
   resetField,
   resetFieldName1,
@@ -38,22 +18,23 @@ const SelectField: React.FC<SelectFieldProps> = ({
   data,
   label,
   placeholderText,
-  errorMessage,
   errors,
   labelKey,
   valueKey,
-  disabledValue,
+  // disabledValue,
   makeDisable,
   isLoading,
   onChange,
   defaultValue,
   isRequired,
-}) => {
+}: ISelectField<T, U>) => {
   return (
     <div className="flex flex-col gap-3 w-full">
       <label className="text-black text-base pl-2">
         {label}
-        {isRequired && !makeDisable && <span className="text-red-500 px-0.5">*</span>}
+        {isRequired && !makeDisable && (
+          <span className="text-red-500 px-0.5">*</span>
+        )}
       </label>
 
       {isLoading ? (
@@ -62,7 +43,7 @@ const SelectField: React.FC<SelectFieldProps> = ({
         <div>
           <Controller
             control={control}
-            name={name}
+            name={name as Path<T>}
             rules={{ required: true }}
             render={({ field }) => (
               <Select
@@ -71,26 +52,28 @@ const SelectField: React.FC<SelectFieldProps> = ({
                   field.onChange(value);
                   // reset()
                   if (onChange) onChange(value);
-                  resetField(resetFieldName1);
-                  resetField(resetFieldName2);
+                  if (resetField) {
+                    if (resetFieldName1) resetField(resetFieldName1 as Path<T>);
+                    if (resetFieldName2) resetField(resetFieldName2 as Path<T>);
+                  }
                 }}
                 disabled={makeDisable}
-                defaultValue={defaultValue}
+                defaultValue={defaultValue as string | undefined}
               >
-                <SelectTrigger className="outline-none text-base bg-greySecondary py-5 pl-4 rounded-md w-full flex">
+                <SelectTrigger className="outline-none text-ashPrimary text-sm bg-greyPrimary py-5 pl-4 rounded-md w-full flex">
                   <SelectValue
                     className="text-sm"
                     placeholder={placeholderText}
                   />
                 </SelectTrigger>
                 <SelectContent className="">
-                  {data?.map((item: any) => (
+                  {data?.map((item, index: number) => (
                     <SelectItem
-                      key={item[valueKey]}
-                      className="bg-greySecondary hover:bg-redPrimary text-sm text-textPrimary hover:text-white"
-                      value={item[valueKey]}
+                      key={index}
+                      className="bg-whitePrimary hover:bg-blueSecondary text-sm text-blackSecondary"
+                      value={item[valueKey as keyof U] as string}
                     >
-                      {item[labelKey]}
+                      {String(item[labelKey as keyof U])}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -99,12 +82,10 @@ const SelectField: React.FC<SelectFieldProps> = ({
           />
           {errors?.[name] && (
             <p className="text-red-500 text-sm mt-3.5 pl-3">
-              {errors?.[name]?.message}
+              {typeof errors?.[name]?.message === "string" &&
+                errors?.[name]?.message}
             </p>
           )}
-          {/* {errorMessage && (
-            <p className="text-red-500 text-sm mt-1 pl-3">{errorMessage}</p>
-          )} */}
         </div>
       )}
     </div>

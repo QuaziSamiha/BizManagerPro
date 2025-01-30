@@ -5,9 +5,9 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 import { Sidebar, SidebarBody } from "../sidebar";
 import { TbReportAnalytics } from "react-icons/tb";
-import { MdOutlineAnalytics } from "react-icons/md";
+import { MdInventory, MdOutlineAnalytics, MdOutlineFeedback } from "react-icons/md";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
-import { TiChartPieOutline } from "react-icons/ti";
+import { TiChartPieOutline, TiTicket } from "react-icons/ti";
 import { BsClipboard2Check } from "react-icons/bs";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { RiShoppingCartLine } from "react-icons/ri";
@@ -24,7 +24,7 @@ import Module from "./Module";
 
 const DashboardSidebar = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = useState<boolean>(false);
- 
+
   const dashboardModuleData: IModuleData = {
     moduleLinks: [
       {
@@ -133,23 +133,38 @@ const DashboardSidebar = ({ children }: { children: React.ReactNode }) => {
     ],
   };
 
-  const userManagementModuleData: IModuleData = {
-    moduleTitle: "User Management",
-    moduleLinks: [
-      {
-        label: "Administrator",
-        href: "/administrator",
-        icon: FaRegUser,
-      },
-    ],
-  };
-
   const lossPreventionModuleData: IModuleData = {
     moduleLinks: [
       {
         label: "Loss Prevention",
         href: "/loss-prevention",
         icon: MdOutlineVideoCameraBack,
+      },
+    ],
+  };
+
+  const userManagementModuleData: IModuleData = {
+    moduleTitle: "User Management",
+    moduleLinks: [
+      {
+        label: "Administrator",
+        href: "/user-management/administrator",
+        icon: FaRegUser,
+      },
+      {
+        label: "Inventory Management",
+        href: "/user-management/inventory-management",
+        icon: MdInventory,
+      },
+      {
+        label: "Support Ticketing System",
+        href: "/user-management/support-ticketing-system",
+        icon: TiTicket,
+      },
+      {
+        label: "Feedback and Survey Management",
+        href: "/user-management/feedback-survey-management",
+        icon: MdOutlineFeedback,
       },
     ],
   };

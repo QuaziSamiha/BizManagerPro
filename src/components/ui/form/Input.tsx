@@ -1,30 +1,17 @@
-import { UseFormRegister } from "react-hook-form";
+import { IInput } from "@/interfaces/form";
+import { FieldValues, Path } from "react-hook-form";
 
-interface FieldInfo {
-  inputType: string;
-  placeholderText: string;
-  name: string;
-  errors?: any;
-  labelName?: string;
-  register: UseFormRegister<any>;
-  disabled?: boolean;
-  isRequired?: boolean;
-  defaultValue?: any;
-  errorsMsg?: any;
-}
-
-const Input: React.FC<FieldInfo> = ({
+const Input = <T extends FieldValues>({
   labelName,
-  inputType,
+  inputType = "text",
   placeholderText,
   name,
   errors,
   register,
   disabled,
-  defaultValue,
   isRequired,
-  errorsMsg,
-}) => {
+  defaultValue,
+}: IInput<T>) => {
   return (
     <div className="flex flex-col gap-3 w-full">
       <label className="text-black text-base pl-2">
@@ -34,22 +21,19 @@ const Input: React.FC<FieldInfo> = ({
         )}{" "}
       </label>
       <input
-        className="block outline-none bg-greySecondary font-normal placeholder:text-textPrimary text-sm py-2.5 px-3 rounded-md w-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+        className="block outline-none bg-greyPrimary font-normal placeholder:text-textPrimary text-sm py-2.5 px-3 rounded-md w-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
         type={inputType}
         placeholder={placeholderText}
         defaultValue={defaultValue}
-        {...register(name)}
+        {...register(name as Path<T>)}
         disabled={disabled}
         onWheel={(e) => e.currentTarget.blur()}
       />
       {errors?.[name] && !disabled && (
         <p className="text-red-500 text-sm mt-1 pl-3">
-          {errors[name]?.message}
+          {typeof errors[name]?.message === "string" && errors[name]?.message}
         </p>
       )}
-      {/* {errorsMsg && (
-        <p className="text-red-500 text-sm mt-1 pl-3">{errorsMsg}</p>
-      )} */}
     </div>
   );
 };

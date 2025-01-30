@@ -1,5 +1,6 @@
-import { Controller } from "react-hook-form";
-import { Skeleton } from "@/components/ui/skeleton";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { Control, Controller, UseFormResetField } from "react-hook-form";
 import {
   Select,
   SelectContent,
@@ -7,12 +8,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
 
+type TData = {
+  id: number;
+  label: string;
+  value: string;
+}
 interface SelectFieldProps {
-  control: any;
-  resetField: any;
+  control: Control<any>;
+  resetField: UseFormResetField<any>;
   name: string;
-  data: any[];
+  data: TData[];
   label: string;
   placeholder: string;
   error?: string;
@@ -21,9 +28,9 @@ interface SelectFieldProps {
   resetFieldName1: string;
   resetFieldName2: string;
   disabledValue: string;
-  makeDisable?: any;
-  defaultValue?: string;
+  defaultValue: string;
   isLoading: boolean;
+  makeDisable?: boolean;
 }
 
 const EditSelectField: React.FC<SelectFieldProps> = ({
@@ -38,10 +45,9 @@ const EditSelectField: React.FC<SelectFieldProps> = ({
   error,
   labelKey,
   valueKey,
-  disabledValue,
-  makeDisable,
   defaultValue,
   isLoading,
+  makeDisable,
 }) => {
   return (
     <div className="lg:px-3 col-span-1">
@@ -74,13 +80,13 @@ const EditSelectField: React.FC<SelectFieldProps> = ({
                   />
                 </SelectTrigger>
                 <SelectContent>
-                  {data?.map((item: any) => (
+                  {data?.map((item: TData) => (
                     <SelectItem
-                      key={item[valueKey]}
+                      key={item[valueKey as keyof TData] as string}
                       className="border-b-2 border-brandLsPrimary text-sm text-brandPrimary"
-                      value={item[valueKey]}
+                      value={item[valueKey as keyof TData] as string}
                     >
-                      {item[labelKey]}
+                      {item[labelKey as keyof TData]}
                     </SelectItem>
                   ))}
                 </SelectContent>

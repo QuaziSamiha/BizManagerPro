@@ -113,7 +113,8 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden  items-center justify-between bg-gradient-to-br from-primary  to-cyan-500 w-full"
+          "h-10 px-4 py-4 flex flex-row md:hidden items-center justify-between bg-gradient-to-br from-primary  to-cyan-500 w-full",
+          className
         )}
         {...props}
       >
@@ -169,14 +170,19 @@ export const SidebarLink = ({
   return (
     <Link
       href={link.href}
-      className={`flex items-center justify-start gap-2 group/sidebar py-2 ${
-        pathname === link.href ? "text-blue-700 font-medium" : "text-stone-400"
-      }`}
+      className={cn(
+        `flex items-center justify-start gap-2 group/sidebar py-2 ${
+          pathname === link.href
+            ? "font-normal"
+            : "text-stone-500"
+        }`,
+        className
+      )}
       {...props}
     >
       <IconComponent
         className={`${
-          pathname === link.href ? "text-blue-700" : "text-stone-400"
+          pathname === link.href ? "text-blue-700" : "text-stone-500"
         } h-5 w-5 flex-shrink-0`}
       />
 

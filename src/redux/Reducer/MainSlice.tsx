@@ -1,17 +1,10 @@
+import { IMainState } from "@/interfaces/reduxInterfaces/mainSlice";
 import { createSlice } from "@reduxjs/toolkit";
 
-
-interface MainState {
-  search: boolean;
-  add: boolean;
-  toggle:boolean;
-  val: any;
-}
-
-const initialState: MainState = {
+const initialState: IMainState = {
   search: false,
   add: false,
-  toggle:false,
+  toggle: false,
   val: {},
 };
 
@@ -32,10 +25,10 @@ export const MainSlice = createSlice({
       state.add = false;
     },
     handleToggle: (state) => {
-      state.toggle =!state.toggle;
+      state.toggle = !state.toggle;
     },
     rowValue: (state, action) => {
-      state.val = action.payload;  // Updating Redux state with the rowData
+      state.val = action.payload; // Updating Redux state with the rowData
     },
   },
 });
@@ -46,11 +39,11 @@ export const {
   handleAddModalOpen,
   handleAddModalClose,
   handleToggle,
-  rowValue
+  rowValue,
 } = MainSlice.actions;
 
 export default MainSlice.reducer;
 
 export type RootState = {
-  Initial: MainState;
+  Initial: IMainState;
 };

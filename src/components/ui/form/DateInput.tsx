@@ -5,22 +5,10 @@ import { Calendar } from "../calendar";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues, Path, PathValue } from "react-hook-form";
+import { IDateInput } from "@/interfaces/form";
 
-interface IDateInput {
-  placeholderText?: string;
-  name: string;
-  labelName?: string;
-  errors: any;
-  control: any;
-  setValue: any;
-  isRequired?: boolean;
-  dateFormat?: string;
-  disabled?: boolean;
-  defaultValue?: any;
-}
-
-const DateInput: React.FC<IDateInput> = ({
+const DateInput = <T extends FieldValues>({
   labelName,
   placeholderText,
   name,
@@ -30,24 +18,27 @@ const DateInput: React.FC<IDateInput> = ({
   setValue,
   isRequired,
   disabled,
-}) => {
-  const [date, setDate] = useState<Date>();
+}: IDateInput<T>) => {
+  const [, setDate] = useState<Date>();
   const handleDateSelect = (selectedDate: Date | undefined) => {
     if (selectedDate) {
-      const formattedDate = format(selectedDate, dateFormat); // Format to "12 Dec, 24"
+      const formattedDate = format(selectedDate, dateFormat);
       setDate(selectedDate);
-      setValue(name, formattedDate);
+      setValue(
+        name as Path<T>,
+        formattedDate as unknown as PathValue<T, Path<T>>
+      );
     }
   };
   return (
-    <div className="flex flex-col gap-3 w-full">
+    <div className="flex flex-col gap-3 w-full z-[99999]">
       <label className="text-black text-base pl-1">
         {labelName}
         {isRequired && <span className="text-red-500 px-0.5">*</span>}{" "}
       </label>
 
       <Controller
-        name={name}
+        name={name as Path<T>}
         control={control}
         rules={{ required: "Date is required" }}
         render={({ field }) => (
@@ -56,7 +47,7 @@ const DateInput: React.FC<IDateInput> = ({
               <Button
                 variant={"outline"}
                 className={cn(
-                  "justify-start text-left font-normal bg-greySecondary",
+                  "justify-start text-left font-normal bg-greyPrimary",
                   !field.value && "text-muted-foreground"
                 )}
                 disabled={disabled}
@@ -69,11 +60,11 @@ const DateInput: React.FC<IDateInput> = ({
                 )}
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto bg-white">
+            <PopoverContent className="w-auto bg-white pointer-events-auto">
               <Calendar
                 mode="single"
                 selected={field.value}
-                onSelect={field.onChange}
+                onSelect={handleDateSelect}
                 initialFocus
               />
             </PopoverContent>
@@ -81,7 +72,11 @@ const DateInput: React.FC<IDateInput> = ({
         )}
       />
       {errors[name] && !disabled && (
-        <p className="text-red-500 text-sm">{errors[name]?.message}</p>
+        <p className="text-red-500 text-sm">
+          {typeof errors[name]?.message === "string"
+            ? errors[name]?.message
+            : ""}
+        </p>
       )}
     </div>
   );

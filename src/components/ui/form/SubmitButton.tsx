@@ -1,11 +1,8 @@
+import { ISubmitButton } from "@/interfaces/form/modal";
 import React from "react";
 
-interface IProps {
-  submitTitle: string;
-  bgColor?: string;
-  hoverBgColor?: string;
-}
-const SubmitButton: React.FC<IProps> = ({
+
+const SubmitButton: React.FC<ISubmitButton> = ({
   submitTitle = 'Submit',
   bgColor = 'bg-greenPrimary',
   hoverBgColor = 'hover:bg-greenPrimary',

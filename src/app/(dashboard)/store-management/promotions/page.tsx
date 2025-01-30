@@ -1,4 +1,3 @@
-import Promotions from "@/components/storeManagement/promotions/Promotions";
 import Loader from "@/components/ui/share/loader/Loader";
 import dynamic from "next/dynamic";
 

@@ -1,42 +1,26 @@
-import { FaRegEdit } from "react-icons/fa";
+import { BiSolidEdit } from "react-icons/bi";
 import { IoEyeOutline } from "react-icons/io5";
-import { MdDeleteOutline } from "react-icons/md";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "../tooltip";
-import { GrDocumentDownload } from "react-icons/gr";
+import { ITooltipDiv } from "@/interfaces/share";
 
-interface IAdd {
-  name: string;
-}
-
-const TooltipDiv: React.FC<IAdd> = ({ name }) => {
+const TooltipDiv: React.FC<ITooltipDiv> = ({ name }) => {
   return (
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <label
-            htmlFor="show data"
-            className="cursor-pointer p-2 rounded-md"
-          >
-            {name === "Edit" && <FaRegEdit className="text-blue-700  hover:text-blue-900" fontSize={18} />}
-            {name === "View" && <IoEyeOutline fontSize={16} color="#FFF" />}
-            {name === "Delete" && (
-              <MdDeleteOutline
-                fontSize={16}
-                color="#FFF"
-                className="hover:fill-red-500"
-              />
-            )}
-            {name === "Download" && (
-              <GrDocumentDownload fontSize={20} color="#FFF" />
+          <label htmlFor="show data" className="cursor-pointer">
+            {name === "Edit" && <BiSolidEdit fontSize={24} className="text-blue-700"/>}
+            {name === "View" && (
+              <IoEyeOutline fontSize={20} className="text-blackSecondary" />
             )}
           </label>
         </TooltipTrigger>
-        <TooltipContent className="border border-violetAltPrimary">
+        <TooltipContent>
           <p>{name}</p>
         </TooltipContent>
       </Tooltip>

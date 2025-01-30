@@ -8,10 +8,10 @@ const Module: React.FC<IModuleProps> = ({ open, moduleData }) => {
   const pathname = usePathname();
   // console.log(moduleData)
   return (
-    <div className="flex flex-col gap-2 border-t border-[#7A7A7A] px-2 py-2">
+    <div className="flex flex-col gap-2 border-t border-stone-500 px-2 py-2">
       {moduleData?.moduleTitle && (
         <p
-          className={`text-[#909090] text-sm font-semibold ${
+          className={`text-stone-700 text-sm font-semibold ${
             open ? " opacity-100 " : " opacity-0"
           } text-nowrap`}
         >
@@ -26,8 +26,8 @@ const Module: React.FC<IModuleProps> = ({ open, moduleData }) => {
             link={link}
             className={`${
               pathname === link.href
-                ? "text-violetAltPrimary font-bold"
-                : "text-[#626262] font-semibold"
+                ? "text-blue-700 font-bold"
+                : "text-stone-600 font-semibold"
             }`}
           />
         );

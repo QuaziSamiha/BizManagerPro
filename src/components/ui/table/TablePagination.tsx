@@ -1,3 +1,4 @@
+import { ITable } from "@/interfaces/table";
 import {
   BsFillSkipBackwardFill,
   BsFillSkipEndFill,
@@ -5,14 +6,14 @@ import {
   BsFillSkipStartFill,
 } from "react-icons/bs";
 
-const TablePagination = ({ table }: { table: any }) => {
+const TablePagination = <TData,>({ table }: ITable<TData>) => {
   const pageIndex = table.getState().pagination.pageIndex;
   const pageCount = table.getPageCount();
 
   return (
     <div className="w-full">
       {table?.getRowModel().rows?.length > 0 && (
-        <div className="py-3 px-7 flex w-full items-center justify-between pagination-container gap-4 bg-stone-200 rounded-b-lg">
+        <div className="py-5 px-7 flex w-full items-center justify-between pagination-container gap-4 bg-stone-50 rounded-b-lg border-t border-stone-200">
           <div className="flex items-center gap-2">
             <p className="text-base text-stone-600">Show:</p>
             <select
@@ -101,3 +102,53 @@ const TablePagination = ({ table }: { table: any }) => {
 };
 
 export default TablePagination;
+
+// import { ITable } from "@/interfaces/table";
+// import {
+//   MdOutlineKeyboardArrowLeft,
+//   MdOutlineKeyboardArrowRight,
+// } from "react-icons/md";
+
+// const TablePagination = <TData,>({ table }: ITable<TData>) => {
+//   const pageIndex = table.getState().pagination.pageIndex;
+//   return (
+//     <div className="w-full">
+//       {table?.getRowModel().rows?.length > 0 && (
+//         <div className="py-3 pagination-container">
+//           <div className="flex items-center gap-2">
+//             <button
+//               disabled={!table.getCanPreviousPage()}
+//               onClick={() => table.previousPage()}
+//               className="disabled:opacity-40 disabled:cursor-not-allowed"
+//             >
+//               <MdOutlineKeyboardArrowLeft
+//                 fontSize={24}
+//                 className="text-blackPrimary disabled:text-opacity-30"
+//               />
+//             </button>
+//             <div className="flex justify-center items-center gap-2">
+//               <div className="px-1.5 w-6 h-6 text-whitePrimary bg-bluePrimary rounded text-center">
+//                 {pageIndex + 1}
+//               </div>{" "}
+//               <div className="px-1.5 w-6 h-6 text-whitePrimary bg-bluePrimary rounded text-center">
+//                 {pageIndex + 2}
+//               </div>
+//             </div>
+//             <button
+//               disabled={!table.getCanNextPage()}
+//               onClick={() => table.nextPage()}
+//               className="disabled:opacity-40 disabled:cursor-not-allowed"
+//             >
+//               <MdOutlineKeyboardArrowRight
+//                 fontSize={24}
+//                 className="text-blackPrimary disabled:text-opacity-40"
+//               />
+//             </button>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default TablePagination;
