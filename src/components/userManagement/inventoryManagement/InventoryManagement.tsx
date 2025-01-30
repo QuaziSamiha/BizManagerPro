@@ -210,6 +210,24 @@ const inventoryData: IRow[] = [
   },
 ];
 
+const categoryColors: Record<string, string> = {
+  Displays: "bg-green-100 text-green-900",
+  Storage: "bg-cyan-100 text-cyan-800",
+  Audio: "bg-yellow-100 text-yellow-700",
+  "POS Machines": "bg-pink-100 text-pink-700",
+  Desktops: "bg-orange-100 text-orange-700",
+  Scanners: "bg-purple-100 text-purple-700",
+  Cameras: "bg-sky-100 text-sky-700",
+  Printers: "bg-violet-100 text-violet-700",
+  Networking: "bg-lime-100 text-lime-700",
+  Laptops: "bg-emerald-100 text-emerald-700",
+  "Input Devices": "bg-teal-100 text-teal-700",
+  Accessories: "bg-indigo-100 text-indigo-700",
+  Mobiles: "bg-amber-100 text-amber-700",
+  "Power Supplies": "bg-stone-100 text-stone-700",
+  Servers: "bg-gray-100 text-gray-700",
+};
+
 const InventoryManagement = () => {
   // const [editData, setEditData] = useState();
   const [addModalOpen, setAddModalOpen] = useState(false);
@@ -241,16 +259,8 @@ const InventoryManagement = () => {
           <div className="flex gap-3 justify-center items-center w-full">
             <div
               className={`w-32 py-1 rounded-full text-center ${
-                category === "Displays"
-                  ? "bg-green-100 text-green-900"
-                  : `${
-                      category === "Storage"
-                        ? "bg-cyan-100 text-cyan-800"
-                        : `${
-                            category === "Audio" &&
-                            "bg-yellow-100 text-yellow-700"
-                          }`
-                    }`
+                categoryColors[rowData.category] ||
+                "bg-stone-200 text-stone-800"
               }`}
             >
               {category}
@@ -262,6 +272,28 @@ const InventoryManagement = () => {
     {
       header: "Stock Level",
       accessorKey: "stockLevel",
+      cell: ({ row }: { row: { original: IRow } }) => {
+        const rowData = row.original;
+        // console.log(rowData.category);
+        const level = rowData.stockLevel;
+        return (
+          <div className="flex gap-3 justify-center items-center w-full">
+            <div
+              className={`w-32 py-1 rounded-full text-center ${
+                level <= 5
+                  ? "bg-red-100 text-red-700"
+                  : `${
+                      level > 30
+                        ? "bg-green-100 text-green-700"
+                        : "bg-stone-200 text-stone-700"
+                    }`
+              }`}
+            >
+              {level}
+            </div>
+          </div>
+        );
+      },
     },
     {
       header: "Specifications",
@@ -274,6 +306,22 @@ const InventoryManagement = () => {
       accessorKey: "location",
       enableColumnFilter: false,
       enableSorting: false,
+      cell: ({ row }: { row: { original: IRow } }) => {
+        const location = row.original.location;
+        return (
+          <div
+            className={`w-32 py-1 rounded-full text-center ${
+              location.includes("Store Room")
+                ? "bg-cyan-100 text-cyan-800"
+                : location.includes("Warehouse")
+                ? "bg-pink-100 text-pink-700"
+                : "bg-gray-100 text-gray-700"
+            }`}
+          >
+            {location}
+          </div>
+        );
+      },
     },
     {
       header: "Action",
@@ -357,3 +405,4 @@ const InventoryManagement = () => {
 };
 
 export default InventoryManagement;
+

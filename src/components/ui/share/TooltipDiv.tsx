@@ -18,9 +18,10 @@ const TooltipDiv: React.FC<ITooltipDiv> = ({ name }) => {
               <BiSolidEdit fontSize={24} className="text-blue-700" />
             )}
             {name === "View" && (
-              <div className="hover:bg-green-100 rounded px-1.5 py-1 group">
-                <IoEyeOutline fontSize={20} className="text-blackSecondary group-hover:text-green-900" />
-              </div>
+              // <div className="hover:bg-green-100 hover:border border-green-300 rounded px-1.5 py-1 group">
+                <IoEyeOutline fontSize={20} className="text-blackSecondary hover:text-blue-700 font-bold" />
+                // <IoEyeOutline fontSize={20} className="text-blackSecondary group-hover:text-green-900" />
+              // </div>
             )}
           </label>
         </TooltipTrigger>
