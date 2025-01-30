@@ -22,8 +22,8 @@ const MainHeading: React.FC<IMainHeading> = ({
     <>
       <div className="flex justify-between items-center">
         <div>
-          <p className="font-semibold text-blue-800 text-3xl">{headerName}</p>
-          <p className="text-blue-500 text-opacity-50 font-medium">
+          <p className="font-semibold text-blue-900 text-3xl">{headerName}</p>
+          <p className="text-blue-700 font-normal">
             {subHeader}
           </p>
         </div>
@@ -36,7 +36,7 @@ const MainHeading: React.FC<IMainHeading> = ({
             </div>
           </DialogTrigger>
 
-          <DialogContent className="bg-white w-full max-h-[90vh] overflow-y-auto scrollbar">
+          <DialogContent className="bg-white w-[50vw] max-h-[90vh] overflow-y-auto scrollbar">
             <DialogHeader>
               <DialogTitle className="text-blue-800 text-2xl">{modalTitle}</DialogTitle>
             </DialogHeader>

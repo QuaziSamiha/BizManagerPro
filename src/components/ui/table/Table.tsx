@@ -68,7 +68,7 @@ const Table = <TData,>({ table, isLoading }: ITable<TData>) => {
                               <CiSearch className="absolute text-xl top-3 left-2" />
                               <input
                                 type="text"
-                                className="my-1 px-8 py-1 w-full column-filter bg-white border border-stone-300 outline-none rounded-md text-stone-600 font-medium"
+                                className="my-1 px-8 py-1 w-full column-filter bg-white border border-stone-200 outline-none rounded-md text-stone-600 font-medium"
                                 onChange={(
                                   e: React.ChangeEvent<HTMLInputElement>
                                 ) =>

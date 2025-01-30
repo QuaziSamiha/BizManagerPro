@@ -233,14 +233,35 @@ const InventoryManagement = () => {
     {
       header: "Category",
       accessorKey: "category",
-      enableColumnFilter: false,
-      enableSorting: false,
+      cell: ({ row }: { row: { original: IRow } }) => {
+        const rowData = row.original;
+        // console.log(rowData.category);
+        const category = rowData.category;
+        return (
+          <div className="flex gap-3 justify-center items-center w-full">
+            <div
+              className={`w-32 py-1 rounded-full text-center ${
+                category === "Displays"
+                  ? "bg-green-100 text-green-900"
+                  : `${
+                      category === "Storage"
+                        ? "bg-cyan-100 text-cyan-800"
+                        : `${
+                            category === "Audio" &&
+                            "bg-yellow-100 text-yellow-700"
+                          }`
+                    }`
+              }`}
+            >
+              {category}
+            </div>
+          </div>
+        );
+      },
     },
     {
       header: "Stock Level",
       accessorKey: "stockLevel",
-      enableColumnFilter: false,
-      enableSorting: false,
     },
     {
       header: "Specifications",

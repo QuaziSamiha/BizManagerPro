@@ -14,9 +14,13 @@ const TooltipDiv: React.FC<ITooltipDiv> = ({ name }) => {
       <Tooltip>
         <TooltipTrigger asChild>
           <label htmlFor="show data" className="cursor-pointer">
-            {name === "Edit" && <BiSolidEdit fontSize={24} className="text-blue-700"/>}
+            {name === "Edit" && (
+              <BiSolidEdit fontSize={24} className="text-blue-700" />
+            )}
             {name === "View" && (
-              <IoEyeOutline fontSize={20} className="text-blackSecondary" />
+              <div className="hover:bg-green-100 rounded px-1.5 py-1 group">
+                <IoEyeOutline fontSize={20} className="text-blackSecondary group-hover:text-green-900" />
+              </div>
             )}
           </label>
         </TooltipTrigger>
