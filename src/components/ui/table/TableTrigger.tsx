@@ -29,9 +29,7 @@ const TableTrigger: React.FC<ITableTrigger> = ({
 
           <DialogContent className="bg-white w-full max-h-[90vh] overflow-y-auto scrollbar">
             <DialogHeader>
-              <DialogTitle
-                className={`font-semibold text-2xl`}
-              >
+              <DialogTitle className={`font-semibold text-2xl`}>
                 {modalTitle}
               </DialogTitle>
             </DialogHeader>

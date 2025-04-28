@@ -11,34 +11,44 @@ import { IMainHeading } from "@/interfaces/share";
 const MainHeading: React.FC<IMainHeading> = ({
   headerName,
   subHeader,
-  buttonName,
-  children,
   open,
   setOpen,
-  modalTitle = "New " + headerName,
+  buttonName,
   ButtonIcon = MdAdd,
+  children,
+  modalTitle = "New " + headerName,
 }) => {
+  // console.log(open)
   return (
     <>
       <div className="flex justify-between items-center">
-        <div className="flex flex-col gap-3">
-          <p className="font-semibold text-blue-900 text-3xl">{headerName}</p>
-          <p className="text-blue-700 font-normal text-sm">
+        <div>
+          <p className="font-semibold text-slate-700 text-3xl">{headerName}</p>
+          {/* <p className="font-bold text-blackSecondary text-2xl">{headerName}</p> */}
+          <p className="text-blackSecondary text-opacity-60 font-medium">
             {subHeader}
           </p>
         </div>
 
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger className="">
-            <div className="bg-blue-700 hover:bg-blue-800 select-none px-3 py-2 rounded-md font-medium text-white text-base flex justify-center items-center gap-2">
-              {<ButtonIcon fontSize={20} />}
+            <div className="bg-blueActual hover:bg-blueHover select-none px-3 py-2 rounded-md font-medium text-white hover:text-silver text-base flex justify-center items-center gap-2">
+              {/* <div className="bg-violetAltSecondary select-none px-3 py-2 rounded-md font-medium text-white text-base flex justify-center items-center gap-2"> */}
+              {
+                <ButtonIcon
+                  fontSize={20}
+                  className="text-white hover:text-silver"
+                />
+              }
               {buttonName}
             </div>
           </DialogTrigger>
 
-          <DialogContent className="bg-white w-[50vw] max-h-[90vh] overflow-y-auto scrollbar">
-            <DialogHeader>
-              <DialogTitle className="text-blue-800 text-2xl">{modalTitle}</DialogTitle>
+          <DialogContent className="bg-white w-[60vw] max-h-[90vh] overflow-y-auto scrollbar">
+            <DialogHeader className="">
+              <DialogTitle className="text-slate-700 font-semibold text-2xl">
+                {modalTitle}
+              </DialogTitle>
             </DialogHeader>
             {children}
           </DialogContent>
@@ -49,5 +59,3 @@ const MainHeading: React.FC<IMainHeading> = ({
 };
 
 export default MainHeading;
-
-
