@@ -1,4 +1,10 @@
-import { Control, FieldValues, Path, UseFormTrigger } from "react-hook-form";
+import {
+  Control,
+  FieldValues,
+  Path,
+  RegisterOptions,
+  UseFormTrigger,
+} from "react-hook-form";
 import { IconType } from "react-icons/lib";
 
 export interface ISubmitButton {
@@ -25,7 +31,7 @@ export interface IInputField<
   requiredMessage?: string;
 }
 
-// ============ SINGLE SELECT SEARCH FIELD ==============
+// ============ SINGLE SELECT FIELD WITH SEARCH OPTION ==============
 export interface ISingleSelectOption {
   id: string | number;
   name: string;
@@ -40,20 +46,27 @@ export interface ISingleSelect<T extends FieldValues> {
   isLoading?: boolean;
 }
 
-// ========= TOGGLE BUTTON LARGE =========
+// ============ MULTIPLE OR ALL SELECT FIELD WITH SEARCH OPTION ==============
+export interface IMultiSelectOption {
+  id: number;
+  name: string;
+}
 
-export interface IToggleButton<T extends FieldValues> {
+export interface IMultiSelect<T extends FieldValues> {
   labelName?: string;
-  name: Path<T>;
+  placeholderText?: string;
+  name: keyof T;
+  options: IMultiSelectOption[];
   control: Control<T>;
-  positiveText?: string;
-  negativeText?: string;
-  defaultValue: boolean | number;
-  className?: string;
+  rules?: Omit<
+    RegisterOptions<T, Path<T>>,
+    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
+  >;
+  isRequired?: boolean;
+  isLoading: boolean;
 }
 
 // ========= SINGLE SELECT FIELD WITHOUT SEARCH OPTION =============
-
 export interface ISelectOption {
   id: number;
   label: string;
@@ -75,4 +88,15 @@ export interface ISelectField<T extends FieldValues> {
   defaultValue?: string;
   isRequired?: boolean;
   requiredMessage?: string;
+}
+
+// ========= TOGGLE BUTTON LARGE =========
+export interface IToggleButton<T extends FieldValues> {
+  labelName?: string;
+  name: Path<T>;
+  control: Control<T>;
+  positiveText?: string;
+  negativeText?: string;
+  defaultValue: boolean | number;
+  className?: string;
 }

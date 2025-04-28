@@ -50,10 +50,7 @@ const SingleSelectSearch = <T extends FieldValues>({
           <Controller
             name={name as Path<T>}
             control={control}
-            rules={{
-              required: isRequired ? `${labelName} is required` : false,
-            }}
-            // rules={{ required: isRequired }}
+            rules={{ required: isRequired }}
             render={({ field: { value, onChange }, fieldState: { error } }) => {
               const selectedOption = (options ?? []).find(
                 (opt) => opt.id === value
