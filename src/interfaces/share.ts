@@ -15,3 +15,9 @@ export interface IMainHeading {
 export interface ITooltipDiv {
   name: string;
 }
+
+export interface IModal {
+  setOpen: (open: boolean) => void;
+  refetch?: () => void;
+  data?: unknown;
+}

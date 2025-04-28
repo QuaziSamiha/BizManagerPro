@@ -23,7 +23,7 @@ const MainHeading: React.FC<IMainHeading> = ({
     <>
       <div className="flex justify-between items-center">
         <div>
-          <p className="font-semibold text-slate-700 text-3xl">{headerName}</p>
+          <p className="font-semibold text-amber-950 text-3xl">{headerName}</p>
           {/* <p className="font-bold text-blackSecondary text-2xl">{headerName}</p> */}
           <p className="text-blackSecondary text-opacity-60 font-medium">
             {subHeader}
@@ -46,7 +46,7 @@ const MainHeading: React.FC<IMainHeading> = ({
 
           <DialogContent className="bg-white w-[60vw] max-h-[90vh] overflow-y-auto scrollbar">
             <DialogHeader className="">
-              <DialogTitle className="text-slate-700 font-semibold text-2xl">
+              <DialogTitle className="text-amber-950 font-semibold text-2xl">
                 {modalTitle}
               </DialogTitle>
             </DialogHeader>

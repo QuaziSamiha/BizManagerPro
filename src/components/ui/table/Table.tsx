@@ -13,8 +13,8 @@ const Table = <TData,>({ table }: ITable<TData>) => {
   // console.log(table.getRowModel())
   return (
     <>
-      <div className="max-w-full overflow-x-auto scroll-smooth scrollbar">
-        <table className="w-full">
+      <div className="w-full">
+        <table className="w-full overflow-x-auto scroll-smooth scrollbar ">
           <thead>
             {table.getHeaderGroups().map((headerGroup: HeaderGroup<TData>) => (
               <tr key={headerGroup.id}>

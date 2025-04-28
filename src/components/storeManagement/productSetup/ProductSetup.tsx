@@ -11,7 +11,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ToastContainer } from "react-toastify";
-// import Loader from "@/components/ui/share/loader/Loader";
 // ? ========= REACT TANSTACK TABLE =========
 import {
   getCoreRowModel,
@@ -22,8 +21,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 // ? ========= IMPORT CUSTOM COMPONENT ==========
-// import Table from "@/components/ui/table/Table";
-// import TablePagination from "@/components/ui/table/TablePagination";
 import FilterTable from "@/components/ui/table/FilterTable";
 import TooltipDiv from "@/components/ui/share/TooltipDiv";
 import MainHeading from "@/components/ui/share/mainHeading/MainHeading";
@@ -31,64 +28,7 @@ import Edit from "./Edit";
 import TablePagination from "@/components/ui/table/TablePagination";
 import Table from "@/components/ui/table/Table";
 import Add from "./add/Add";
-
-// type Product = {
-//   prodName: string;
-//   deptId: string;
-//   sku: string;
-//   profitPct: number;
-//   unitPrice: number;
-//   packQty: number;
-//   retailPrice: number;
-// };
-
-const demoData = [
-  {
-    prodName: "apple",
-    deptId: "fruits",
-    sku: "FRU123",
-    profitPct: 20,
-    unitPrice: 1.5,
-    packQty: 10,
-    retailPrice: 2,
-  },
-  {
-    prodName: "bread",
-    deptId: "bakery",
-    sku: "BAK456",
-    profitPct: 30,
-    unitPrice: 2,
-    packQty: 5,
-    retailPrice: 2.8,
-  },
-  {
-    prodName: "milk",
-    deptId: "dairy",
-    sku: "DAI789",
-    profitPct: 25,
-    unitPrice: 1,
-    packQty: 6,
-    retailPrice: 1.5,
-  },
-  {
-    prodName: "carrot",
-    deptId: "vegetables",
-    sku: "VEG321",
-    profitPct: 15,
-    unitPrice: 0.8,
-    packQty: 20,
-    retailPrice: 1.2,
-  },
-  {
-    prodName: "chicken",
-    deptId: "meat",
-    sku: "MEA654",
-    profitPct: 22,
-    unitPrice: 5,
-    packQty: 3,
-    retailPrice: 6.5,
-  },
-];
+import { demoData } from "./data/data";
 
 // ? ============= MAIN COMPONENT =============
 export default function ProductSetup<T extends Record<string, unknown>>() {
@@ -203,11 +143,11 @@ export default function ProductSetup<T extends Record<string, unknown>>() {
           setOpen={setAddModalOpen}
           modalTitle="New Product Setup"
         >
-          <Add />
-          {/* <Add setOpen={setAddModalOpen} refetch={refetch} /> */}
+          <Add setOpen={setAddModalOpen} />
+          {/* <Add setOpen={setAddModalOpen} /> */}
         </MainHeading>
 
-        <div>
+        <div className="w-full">
           {/* {isLoading ? (
             <Loader />
           ) : ( */}
