@@ -1,10 +1,10 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+// import {
+//   Carousel,
+//   CarouselContent,
+//   CarouselItem,
+//   CarouselNext,
+//   CarouselPrevious,
+// } from "@/components/ui/carousel";
 import {
   Bell,
   Briefcase,
@@ -109,7 +109,7 @@ const Services = () => {
           </div>
         </div>
 
-        <Carousel
+        {/* <Carousel
           opts={{
             align: "start",
             loop: true,
@@ -135,7 +135,7 @@ const Services = () => {
           </CarouselContent>
           <CarouselNext className="bg-blue-600 text-white hover:text-white rounded-full" />
           <CarouselPrevious className="bg-blue-600 text-white hover:text-white rounded-full" />
-        </Carousel>
+        </Carousel> */}
       </section>
     </>
   );

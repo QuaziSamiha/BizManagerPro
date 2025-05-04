@@ -1,6 +1,5 @@
 import LoginForm from "@/components/login/LoginForm";
-import Services from "./Services";
-
+// import Services from "./Services";
 
 const Home = () => {
   return (
@@ -29,7 +28,7 @@ const Home = () => {
                 <LoginForm />
               </div>
             </div>
-            <Services />
+            {/* <Services /> */}
           </div>
         </main>
       </section>
