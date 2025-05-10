@@ -21,13 +21,7 @@ import { Progress } from "@radix-ui/react-progress";
 export default function UnderDevelopment() {
   //   const [email, setEmail] = useState("");
   //   const [isSubmitted, setIsSubmitted] = useState(false);
-  //   const [progress] = useState(65);
   const [progress] = useState(65);
-
-  //   useEffect(() => {
-  //     const timer = setTimeout(() => setProgress(66), 500);
-  //     return () => clearTimeout(timer);
-  //   }, []);
 
   //   const handleSubmit = (e: React.FormEvent) => {
   //     e.preventDefault();
@@ -69,7 +63,7 @@ export default function UnderDevelopment() {
               <div className="bg-silver rounded">
                 <Progress
                   value={progress}
-                  className="h-2 bg-blueActual rounded w-[60%]"
+                  className="h-2 bg-blueActual rounded-l w-[60%]"
                 />
               </div>
             </div>
