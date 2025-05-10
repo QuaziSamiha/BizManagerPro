@@ -1,12 +1,15 @@
-import Dashboard from "@/components/dashboard/Dashboard";
+import Loader from "@/components/ui/share/loader/Loader";
+import dynamic from "next/dynamic";
 
+const DynamicDashboard = dynamic(
+  () => import("@/components/dashboard/Dashboard"),
+  {
+    loading: () => <Loader />,
+  }
+);
 
-const page = () => {
-  return (
-    <div className="">
-      <Dashboard/>
-    </div>
-  );
+const DashboardPage = () => {
+  return <DynamicDashboard />;
 };
 
-export default page;
+export default DashboardPage;

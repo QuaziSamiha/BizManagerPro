@@ -147,3 +147,11 @@ body {
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
   }
 }
+/* 
+progress[value]::-webkit-progress-value {
+  background-color: var(--progress-background);
+}
+
+progress[value]::-moz-progress-bar {
+  background-color: var(--progress-background);
+} */

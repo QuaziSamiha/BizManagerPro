@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <div>
+        <div className="h-screen flex justify-center items-center overflow-y-auto bg-silver">
           <DashboardSidebar>{children}</DashboardSidebar>
         </div>
       </QueryClientProvider>
