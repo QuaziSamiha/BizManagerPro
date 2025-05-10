@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Check, ChevronDown, Search } from "lucide-react";
 import { Controller, FieldValues, Path } from "react-hook-form";
 import { Skeleton } from "../skeleton";
+import { IMultiSelect, IMultiSelectOption } from "@/interfaces/form/form";
 
 const MultiSelect = <T extends FieldValues>({
   labelName,
