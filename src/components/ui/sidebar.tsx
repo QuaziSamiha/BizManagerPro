@@ -113,14 +113,15 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden items-center justify-between bg-gradient-to-br from-primary  to-cyan-500 w-full",
+          "h-10 px-4 py-4 flex flex-row md:hidden items-center justify-between bg-silver w-full",
+          // "h-10 px-4 py-4 flex flex-row md:hidden items-center justify-between bg-gradient-to-br from-primary  to-cyan-500 w-full",
           className
         )}
         {...props}
       >
         <div className="flex justify-end z-20 w-full">
           <IoMenu
-            className="text-neutral-800 dark:text-neutral-200"
+            className="text-blueActual dark:text-neutral-200"
             onClick={() => setOpen(!open)}
           />
         </div>
@@ -135,7 +136,8 @@ export const MobileSidebar = ({
                 ease: "easeInOut",
               }}
               className={cn(
-                "fixed h-full w-full inset-0 bg-gradient-to-br from-primary  to-cyan-500 p-10 z-[100] flex flex-col justify-between",
+                "fixed h-full w-full inset-0 bg-silver p-10 z-[100] flex flex-col justify-between",
+                // "fixed h-full w-full inset-0 bg-gradient-to-br from-primary  to-cyan-500 p-10 z-[100] flex flex-col justify-between",
                 className
               )}
             >
@@ -172,9 +174,7 @@ export const SidebarLink = ({
       href={link.href}
       className={cn(
         `flex items-center justify-start gap-2 group/sidebar py-2 ${
-          pathname === link.href
-            ? "font-normal"
-            : "text-stone-500"
+          pathname === link.href ? "font-normal" : "text-stone-500"
         }`,
         className
       )}

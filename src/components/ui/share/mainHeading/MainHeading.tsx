@@ -21,10 +21,9 @@ const MainHeading: React.FC<IMainHeading> = ({
   // console.log(open)
   return (
     <>
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-8 max-md:mt-6">
         <div>
-          <p className="font-semibold text-amber-950 text-3xl">{headerName}</p>
-          {/* <p className="font-bold text-blackSecondary text-2xl">{headerName}</p> */}
+          <p className="font-semibold text-blueActual text-3xl">{headerName}</p>
           <p className="text-blackSecondary text-opacity-60 font-medium">
             {subHeader}
           </p>
@@ -33,7 +32,6 @@ const MainHeading: React.FC<IMainHeading> = ({
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger className="">
             <div className="bg-blueActual hover:bg-blueHover select-none px-3 py-2 rounded-md font-medium text-white hover:text-silver text-base flex justify-center items-center gap-2">
-              {/* <div className="bg-violetAltSecondary select-none px-3 py-2 rounded-md font-medium text-white text-base flex justify-center items-center gap-2"> */}
               {
                 <ButtonIcon
                   fontSize={20}
@@ -46,7 +44,7 @@ const MainHeading: React.FC<IMainHeading> = ({
 
           <DialogContent className="bg-white w-[60vw] max-h-[90vh] overflow-y-auto scrollbar">
             <DialogHeader className="">
-              <DialogTitle className="text-amber-950 font-semibold text-2xl">
+              <DialogTitle className="text-blueActual font-semibold text-2xl">
                 {modalTitle}
               </DialogTitle>
             </DialogHeader>

@@ -4,8 +4,12 @@ import type React from "react";
 
 import { Home, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function NotFound() {
+  const router = useRouter();
+
   return (
     <div className="min-h-screen flex flex-col bg-silver">
       {/* Top decorative bar */}
@@ -72,9 +76,11 @@ export default function NotFound() {
                   </p>
                 </div>
               </div>
-              <Button className="w-full mt-4 transition-colors bg-white text-blueActual">
-                Go to Homepage
-              </Button>
+              <Link href={"/"}>
+                <Button className="w-full mt-4 transition-colors bg-white hover:bg-white text-blueActual">
+                  Go to Homepage
+                </Button>
+              </Link>
             </div>
 
             <div className="rounded-lg p-6 transition-transform hover:scale-105 bg-redActual">
@@ -93,8 +99,8 @@ export default function NotFound() {
                 </div>
               </div>
               <Button
-                className="w-full mt-4 transition-colors bg-white text-redActual"
-                onClick={() => window.history.back()}
+                className="w-full mt-4 transition-colors bg-white hover:bg-white text-redActual"
+                onClick={() => router.back()}
               >
                 Previous Page
               </Button>

@@ -5,7 +5,11 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 import { Sidebar, SidebarBody } from "../sidebar";
 import { TbReportAnalytics } from "react-icons/tb";
-import { MdInventory, MdOutlineAnalytics, MdOutlineFeedback } from "react-icons/md";
+import {
+  MdInventory,
+  MdOutlineAnalytics,
+  MdOutlineFeedback,
+} from "react-icons/md";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import { TiChartPieOutline, TiTicket } from "react-icons/ti";
 import { BsClipboard2Check } from "react-icons/bs";
@@ -170,10 +174,11 @@ const DashboardSidebar = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <div className={cn("flex flex-col md:flex-row w-full h-screen flex-1")}>
+    <div className={cn("flex flex-col md:flex-row w-full h-screen")}>
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden scroll-smooth scrollbar">
+            {/* <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden scroll-smooth scrollbar"> */}
             <Module open={open} moduleData={dashboardModuleData} />
             <Module open={open} moduleData={reportModuleData} />
             <Module open={open} moduleData={managementModuleData} />
@@ -184,6 +189,7 @@ const DashboardSidebar = ({ children }: { children: React.ReactNode }) => {
         </SidebarBody>
       </Sidebar>
       <div className="flex flex-1">
+        {/* <div className="p-2 md:p-10 border border-Tertiary bg-bg flex flex-col gap-2 flex-1 w-screen h-full overflow-hidden overflow-y-scroll"> */}
         <div className="p-2 md:p-10 border border-Tertiary bg-bg flex flex-col gap-2 flex-1 w-full h-full overflow-hidden overflow-y-scroll">
           {children}
         </div>
