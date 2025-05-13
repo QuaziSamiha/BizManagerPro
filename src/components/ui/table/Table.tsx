@@ -77,8 +77,8 @@ const Table = <TData,>({ table }: ITable<TData>) => {
   // console.log(table.getRowModel())
   return (
     <>
-      <div className="">
-        <table className="">
+      <div className="overflow-x-auto w-full scrollbar">
+        <table className="w-full overflow-x-auto scrollbar">
           <thead>
             {table.getHeaderGroups().map((headerGroup: HeaderGroup<TData>) => (
               <tr key={headerGroup.id}>

@@ -70,6 +70,105 @@ export default function ParentCompany<T extends Record<string, unknown>>() {
       },
     },
     {
+      header: "Name",
+      accessorKey: "companyName",
+      enableColumnFilter: false,
+      enableSorting: false,
+      cell: ({ row }: { row: { original: T } }) => {
+        return (
+          <div className="capitalize">{String(row.original.companyName)}</div>
+        );
+      },
+    },
+    {
+      header: "Name",
+      accessorKey: "companyName",
+      enableColumnFilter: false,
+      enableSorting: false,
+      cell: ({ row }: { row: { original: T } }) => {
+        return (
+          <div className="capitalize">{String(row.original.companyName)}</div>
+        );
+      },
+    },
+    {
+      header: "Name",
+      accessorKey: "companyName",
+      enableColumnFilter: false,
+      enableSorting: false,
+      cell: ({ row }: { row: { original: T } }) => {
+        return (
+          <div className="capitalize">{String(row.original.companyName)}</div>
+        );
+      },
+    },
+    {
+      header: "Name",
+      accessorKey: "companyName",
+      enableColumnFilter: false,
+      enableSorting: false,
+      cell: ({ row }: { row: { original: T } }) => {
+        return (
+          <div className="capitalize">{String(row.original.companyName)}</div>
+        );
+      },
+    },
+    {
+      header: "Name",
+      accessorKey: "companyName",
+      enableColumnFilter: false,
+      enableSorting: false,
+      cell: ({ row }: { row: { original: T } }) => {
+        return (
+          <div className="capitalize">{String(row.original.companyName)}</div>
+        );
+      },
+    },
+    {
+      header: "Name",
+      accessorKey: "companyName",
+      enableColumnFilter: false,
+      enableSorting: false,
+      cell: ({ row }: { row: { original: T } }) => {
+        return (
+          <div className="capitalize">{String(row.original.companyName)}</div>
+        );
+      },
+    },
+    {
+      header: "Name",
+      accessorKey: "companyName",
+      enableColumnFilter: false,
+      enableSorting: false,
+      cell: ({ row }: { row: { original: T } }) => {
+        return (
+          <div className="capitalize">{String(row.original.companyName)}</div>
+        );
+      },
+    },
+    {
+      header: "Name",
+      accessorKey: "companyName",
+      enableColumnFilter: false,
+      enableSorting: false,
+      cell: ({ row }: { row: { original: T } }) => {
+        return (
+          <div className="capitalize">{String(row.original.companyName)}</div>
+        );
+      },
+    },
+    {
+      header: "Name",
+      accessorKey: "companyName",
+      enableColumnFilter: false,
+      enableSorting: false,
+      cell: ({ row }: { row: { original: T } }) => {
+        return (
+          <div className="capitalize">{String(row.original.companyName)}</div>
+        );
+      },
+    },
+    {
       header: "Address",
       accessorKey: "address",
       enableColumnFilter: false,
@@ -153,39 +252,31 @@ export default function ParentCompany<T extends Record<string, unknown>>() {
     <div className="flex flex-col gap-10">
       <Heading headerName="Parent Company" />
 
-      <div className="w-full border-2 border-red-500">
-        <div className="flex justify-center">
-          <div className="w-full border-2 border-cyan-600">
-            {isLoading ? (
-              <Loader />
-            ) : (
-              <div className="border-2 border-yellow-500 bg-silver shadow-lg rounded-lg px-4 lg:px-14 pt-8 pb-4 flex flex-col gap-4">
-                <div className="w-full">
-                  <TableActionPanel
-                    filtering={filtering}
-                    setFiltering={setFiltering}
-                    buttonName="New Parent Company"
-                    open={addModalOpen}
-                    setOpen={setAddModalOpen}
-                    modalTitle="New Parent Company"
-                  >
-                    <div></div>
-                  </TableActionPanel>
-                </div>
-                <div className="overflow-x-auto w-full scrollbar border border-green-500">
-                  {/* <Table table={table} /> */}
-                  <Table table={table} isLoading={isLoading} />
-                </div>
-                <div className="flex justify-end">
-                  <div>
-                    {isLoading ? <Loader /> : <TablePagination table={table} />}
-                    {/* <TablePagination table={table} /> */}
-                  </div>
-                </div>
+      <div className="">
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className=" bg-silver shadow-lg rounded-lg px-4 lg:px-14 pt-8 pb-4 flex flex-col gap-4">
+            <div className="w-full">
+              <TableActionPanel
+                filtering={filtering}
+                setFiltering={setFiltering}
+                buttonName="New Parent Company"
+                open={addModalOpen}
+                setOpen={setAddModalOpen}
+                modalTitle="New Parent Company"
+              >
+                <div></div>
+              </TableActionPanel>
+            </div>
+            <Table table={table} isLoading={isLoading} />
+            <div className="flex justify-end">
+              <div>
+                {isLoading ? <Loader /> : <TablePagination table={table} />}
               </div>
-            )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
